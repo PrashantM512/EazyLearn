@@ -1,9 +1,9 @@
 package com.eazylearn.model;
 
 public class Holiday {
-    private final String day;
-    private final String reason;
-    private final Type type;
+    private String day;
+    private String reason;
+    private Type type;
     
     public enum Type {
     	FESTIVAL,FEDERAL
@@ -20,14 +20,24 @@ public class Holiday {
 		return day;
 	}
 
+	public void setDay(String day) {
+		this.day = day;
+	}
+
 	public String getReason() {
 		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 	public Type getType() {
 		return type;
 	}
-    
-    
+
+	public void setType(Type type) {
+		this.type = type;
+	}
     
 }
