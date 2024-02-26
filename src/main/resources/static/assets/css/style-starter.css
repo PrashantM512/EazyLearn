@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+--*/
+/*!
+ * Bootstrap v5.0.1 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -21203,6 +21213,37 @@ h4.inner-text-title {
 }
 
 /* //login section */
+
+/* //error section */
+.page_404  img{
+    width:100%;
+}
+
+.four_zero_four_bg{
+    background-image: url(/assets/images/dribbble.gif);
+    height: 400px;
+    background-position: center;
+ }
+
+.four_zero_four_bg h1{
+    font-size:80px;
+ }
+
+.four_zero_four_bg h3{
+    font-size:80px;
+}
+
+.link_404{
+    padding: 10px 20px;
+    margin: 20px 0;
+    display: inline-block;
+ }
+
+.contant_box_404{
+    margin-top:-50px;
+}
+
+/* //error section */
 
 /* team block */
 .w3l-team-13 .left-side h4 {
