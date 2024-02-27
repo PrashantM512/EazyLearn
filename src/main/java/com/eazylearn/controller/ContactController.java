@@ -10,16 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.eazylearn.service.ContactService;
-
 import jakarta.validation.Valid;
-
 import com.eazylearn.model.Contact;
-
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.security.core.Authentication;
 import java.util.List;
-
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
