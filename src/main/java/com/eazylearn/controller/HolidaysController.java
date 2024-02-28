@@ -11,6 +11,7 @@ import com.eazylearn.repository.HolidaysRepository;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Controller
 public class HolidaysController {
@@ -20,12 +21,18 @@ public class HolidaysController {
 
     @GetMapping("/holidays")
     public String displayHolidays(Model model) {
-    	 List<Holiday> holidays = holidaysRepository.findAllHolidays();
-         Holiday.Type[] types = Holiday.Type.values();
-         for (Holiday.Type type : types) {
-             model.addAttribute(type.toString(),
-                     (holidays.stream().filter(holiday -> holiday.getType().equals(type)).collect(Collectors.toList())));
-         }
+    	Iterable<Holiday> holidays = holidaysRepository.findAll();
+        List<Holiday> holidayList = StreamSupport
+                .stream(holidays.spliterator(), false)
+                .collect(Collectors.toList());
+        Holiday.Type[] types = Holiday.Type.values();
+        for (Holiday.Type type : types) {
+            model.addAttribute(type.toString(),
+                    (holidayList.stream()
+                            .filter(holiday -> type.name().equals(holiday.getType().name())) // Compare enum name instead of value
+                            .collect(Collectors.toList())));
+        }
+
          return "holidays.html";
     }
 }
