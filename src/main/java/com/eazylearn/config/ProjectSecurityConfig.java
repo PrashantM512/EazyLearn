@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
@@ -30,6 +32,8 @@ public class ProjectSecurityConfig {
                         .requestMatchers(mvcMatcherBuilder.pattern("/assets/**")).permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern("/login")).permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern("/logout")).permitAll()
+                        .requestMatchers("/displayProfile").authenticated()
+                        .requestMatchers("/updateProfile").authenticated()
                         .requestMatchers(mvcMatcherBuilder.pattern("/public/**")).permitAll())
                 .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
                         .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll())
@@ -42,6 +46,11 @@ public class ProjectSecurityConfig {
 
         return http.build();
 
+    }
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }
